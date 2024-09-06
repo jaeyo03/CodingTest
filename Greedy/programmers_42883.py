@@ -11,7 +11,7 @@ def solution(number, k):
 
         collected.append(num)
 
-    # 번호가 차례대로인 예외 상황
+    # 번호가 큰 수 부터 차례대로 정렬 되어 있는 예외 상황
     if len(collected) == len(number):
         collected = collected[:-k]
 
