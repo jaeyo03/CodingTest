@@ -18,6 +18,10 @@
 
 ### 3. 힙
 - import heapq 를 사용하여, heapq를 이용하자
+- heapq.heapify(힙으로 바꿀 리스트)
+- 아래 함수들을 이용해야 힙을 유지한 채 pop,push 가능
+- heapq.heappop()
+- heapq.heappush()
 
 ### 4. DFS,BFS
 - DFS 는 스택 이용
