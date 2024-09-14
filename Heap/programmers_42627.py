@@ -1,6 +1,28 @@
 from collections import deque
 import heapq
 
+def solution_answer(jobs):
+    jobs.sort()
+    n = len(jobs)
+    time, total = 0, 0
+    i = 0  # jobs의 인덱스
+    heap = []
+
+    while i < n or heap:
+        # 현재 시간까지 도착한 모든 작업을 힙에 추가
+        while i < n and jobs[i][0] <= time:
+            heapq.heappush(heap, (jobs[i][1], jobs[i][0]))  # (처리 시간, 요청 시간)
+            i += 1
+
+        if heap:
+            proc_time, arrival = heapq.heappop(heap)
+            time += proc_time
+            total += time - arrival
+        else:
+            # 대기 중인 작업이 없으면 시간을 다음 작업의 요청 시간으로 점프
+            time = jobs[i][0]
+
+    return total // n
 
 def solution(jobs):
     answer = 0
