@@ -38,6 +38,8 @@ def solution(board):
                 ty = ny + dy
 
                 # Check for edge of the board
+                # break를 통해, 만약 이동한 값이 맵 안에 존재하지 않는다면 밑에서 temp 값을 nx,ny에 지정하지 않음!
+                # 결국 D 에 부딪히거나 벽에 부딪힌 상황인거임
                 if not (0 <= tx < n and 0 <= ty < m):
                     break
 
