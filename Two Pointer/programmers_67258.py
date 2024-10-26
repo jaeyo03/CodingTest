@@ -1,5 +1,6 @@
 from collections import defaultdict
 
+# 슬라이딩 윈도우 알고리즘 이용
 def solution(gems):
     num_types = len(set(gems))
     gem_counter = defaultdict(int)
