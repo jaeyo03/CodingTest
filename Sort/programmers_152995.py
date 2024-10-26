@@ -1,3 +1,40 @@
+def my_solution(scores):
+    answer = 0
+    wanho = scores[0]
+
+    scores = [(inx, s[0], s[1]) for inx, s in enumerate(scores)]
+
+    scores.sort(key=lambda x: (-x[2], x[1]))
+
+    max_score = 0
+    eliminated = []
+    for s in scores:
+        inx = s[0]
+        score = s[1]
+        if score < max_score:
+            eliminated.append(inx)
+        else:
+            max_score = score
+
+    if 0 in eliminated:
+        return -1
+
+    new = []
+
+    for s in scores:
+        if s[0] in eliminated or s[0] == 0:
+            continue
+        else:
+            new.append([s[1], s[2]])
+
+    wanho.append(0)
+    new.append(wanho)
+    new.sort(key=lambda x: (x[0] + x[1]))
+    w_inx = new.index(wanho)
+    answer = len(new) - w_inx
+
+    return answer
+
 def solution(scores):
     answer = 0
     # Add index to each score to keep track of original positions
