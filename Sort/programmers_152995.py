@@ -8,6 +8,10 @@ def solution(scores):
     max_peer_evaluation = 0
     eliminated = set()
     for idx, work_attitude, peer_evaluation in indexed_scores:
+        '''
+        위에서 근무 태도 기준으로 정렬하면 동료 평가 점수가 max보다 낮은 사람은 근무 태도 점수는 무조건 낮고,
+        동료 평가 점수도 낮은게 보장되므로 등수 산정에서 제외 가능
+        '''
         if peer_evaluation < max_peer_evaluation:
             eliminated.add(idx)
         else:
