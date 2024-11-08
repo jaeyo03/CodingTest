@@ -22,7 +22,7 @@ def solution(a,b,x):
             for p in possible:
                 first = p[0]
                 second = p[1]
-                # 이미 첫번째로 만족했다면 넘겨
+                # 이미 첫번째 공격으로 만족했다면 넘겨!!
                 if first in first_attack_okay:
                     continue
                 else:
