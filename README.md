@@ -33,6 +33,11 @@
 - bisect를 활용하자
 
 ### 6. 완전탐색
+- product(중복순열), combinations, permutations 등 활용
+- bfs,dfs 도 활용 가능
 
 ### 7. 정렬
 - 기준이 여러개면 sort(data, key=lambda x: (x[0], x[1], x[2]))
+
+### 기타
+- from copy import deepcopy 로 완전 복사 가능
