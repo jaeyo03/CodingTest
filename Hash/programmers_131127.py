@@ -28,7 +28,7 @@ def solution(want, number, discount):
 
     return answer
 
-
+# 아래 풀이가 더 deepcopy를 안 써서 더 빠른 풀이
 def better_solution(want, number, discount):
     answer = 0
     want_indexes = dict()
