@@ -27,3 +27,26 @@ def solution(want, number, discount):
             answer += 1
 
     return answer
+
+
+def better_solution(want, number, discount):
+    answer = 0
+    want_indexes = dict()
+
+    for i in range(len(want)):
+        want_indexes[want[i]] = i
+
+    for i in range(0, len(discount) - 9):
+        discounts = discount[i:i + 10]
+        count_arr = [0] * len(want)
+
+        for d in discounts:
+            if d in want:
+                inx = want_indexes[d]
+                if count_arr[inx] < number[inx]:
+                    count_arr[inx] += 1
+
+        if count_arr == number:
+            answer += 1
+
+    return answer
