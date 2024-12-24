@@ -14,6 +14,7 @@ def solution(data, col, row_begin, row_end):
         if i == row_begin - 1:
             answer = S_i[row_begin - 1]
         else:
+            # python 에서 bitwise 는 ^ 이다.
             answer = answer ^ S_i[i]
 
     return answer
