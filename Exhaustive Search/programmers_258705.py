@@ -1,5 +1,6 @@
 from itertools import combinations
 
+# 시간복잡도 개선이 필요함
 def solution(n, tops):
     answer = 0
     possible = []
