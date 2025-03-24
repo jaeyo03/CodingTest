@@ -42,3 +42,55 @@ for question in questions:
         if graph[v][key] >= k :
             answer += 1
     print(answer)
+
+
+## 정답 풀이
+import sys
+input = sys.stdin.readline
+
+n, q = map(int, input().split())
+edges = []
+for _ in range(n - 1):
+    p, q_, r = map(int, input().split())
+    edges.append((r, p, q_))
+edges.sort(reverse=True)  # 가중치 내림차순 정렬
+
+queries = []
+for i in range(q):
+    k, v = map(int, input().split())
+    queries.append((k, v, i))
+queries.sort(reverse=True)  # 임계값 내림차순 정렬
+
+# Union-Find (DSU 구조) 구조 초기화
+parent = [i for i in range(n+1)]
+size = [1] * (n+1)
+
+def find(x):
+    if parent[x] != x:
+        parent[x] = find(parent[x])
+    return parent[x]
+
+def union(a, b):
+    root_a = find(a)
+    root_b = find(b)
+    if root_a != root_b:
+        if size[root_a] < size[root_b]:
+            root_a, root_b = root_b, root_a
+        parent[root_b] = root_a
+        size[root_a] += size[root_b]
+
+# 쿼리 처리
+answers = [0] * q
+edge_index = 0
+
+for k, v, idx in queries:
+    # 현재 쿼리의 임계값 k 이상인 간선을 모두 union
+    while edge_index < len(edges) and edges[edge_index][0] >= k:
+        _, a, b = edges[edge_index]
+        union(a, b)
+        edge_index += 1
+    # 정점 v와 연결된 컴포넌트의 크기에서 자신을 빼줌
+    answers[idx] = size[find(v)] - 1
+
+for ans in answers:
+    print(ans)
